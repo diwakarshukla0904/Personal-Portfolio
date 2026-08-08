@@ -180,6 +180,15 @@ svg {
   color: var(--accent);
 }
 
+body:has(#profile:target) .rail-nav a[href="#profile"],
+body:has(#work:target) .rail-nav a[href="#work"],
+body:has(#experience:target) .rail-nav a[href="#experience"],
+body:has(#capabilities:target) .rail-nav a[href="#capabilities"],
+body:has(#contact:target) .rail-nav a[href="#contact"] {
+  padding-left: 0.35rem;
+  color: var(--accent);
+}
+
 .rail-footer > p {
   max-width: 12rem;
   color: var(--ink-soft);
@@ -1078,6 +1087,14 @@ svg {
     font-family: var(--mono);
     font-size: 0.6rem;
     text-transform: uppercase;
+  }
+
+  body:has(#profile:target) .mobile-index a[href="#profile"],
+  body:has(#work:target) .mobile-index a[href="#work"],
+  body:has(#experience:target) .mobile-index a[href="#experience"],
+  body:has(#capabilities:target) .mobile-index a[href="#capabilities"],
+  body:has(#contact:target) .mobile-index a[href="#contact"] {
+    color: var(--accent);
   }
 
   .site-main {
