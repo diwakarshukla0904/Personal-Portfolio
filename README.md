@@ -11,6 +11,7 @@ A one-page engineering portfolio built with Next.js, the App Router, TypeScript,
 ```text
 Personal-Portfolio/
 ├── public/
+│   ├── diwakar-shukla-portrait.webp # Portrait shown in the Profile section
 │   └── diwakar-shukla-resume.pdf # Résumé linked throughout the site
 ├── src/
 │   ├── app/
@@ -49,6 +50,8 @@ Copy an existing project object, change every field, and give it the next `numbe
 ## Replace the résumé
 
 Replace `public/diwakar-shukla-resume.pdf` with the new PDF and keep the same filename. The navigation and contact links will continue working. If you rename the file, also update `resumeHref` in `src/data/portfolio.ts`.
+
+To replace the illustrated portrait, overwrite `public/diwakar-shukla-portrait.webp` with a new image using the same filename. Keep a vertical image ratio for the best result.
 
 ## Change colors, typography, or spacing
 

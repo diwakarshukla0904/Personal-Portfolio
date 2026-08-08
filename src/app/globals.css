@@ -429,9 +429,70 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .profile-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.65fr);
-  gap: clamp(3rem, 9vw, 9rem);
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: start;
   margin: clamp(4rem, 8vw, 7rem) 0 0 5rem;
+}
+
+.profile-portrait {
+  position: relative;
+  max-width: 25rem;
+}
+
+.portrait-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background-color: var(--paper-light);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+
+.portrait-frame::before,
+.portrait-frame::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.portrait-frame::before {
+  inset: 0.75rem;
+  border: 1px solid rgb(36 35 33 / 18%);
+}
+
+.portrait-frame::after {
+  top: 0;
+  right: 1.4rem;
+  width: 0.4rem;
+  height: 4.5rem;
+  background: var(--accent);
+}
+
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.profile-portrait figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.profile-details {
+  min-width: 0;
 }
 
 .profile-copy p {
@@ -445,12 +506,20 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 }
 
 .profile-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
   border-top: 1px solid var(--ink);
 }
 
 .profile-facts div {
-  padding: 1.1rem 0;
+  padding: 1.1rem 1rem 1.1rem 0;
   border-bottom: 1px solid var(--line);
+}
+
+.profile-facts div + div {
+  padding-left: 1rem;
+  border-left: 1px solid var(--line);
 }
 
 .profile-facts dt {
@@ -1127,6 +1196,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
     margin-left: 5rem;
   }
 
+  .profile-portrait {
+    width: min(100%, 24rem);
+  }
+
   .project-brief {
     grid-template-columns: 1fr;
   }
@@ -1211,6 +1284,19 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
   .profile-content {
     margin: 3.5rem 0 0;
+  }
+
+  .profile-portrait {
+    width: 100%;
+  }
+
+  .profile-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-facts div + div {
+    padding-left: 0;
+    border-left: 0;
   }
 
   .profile-copy p {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ProjectStudy } from "@/components/project-study";
 import { SectionIntro } from "@/components/section-intro";
 import { portfolio } from "@/data/portfolio";
@@ -104,23 +105,41 @@ export default function Home() {
             title="From the microstructure to the manufacturing floor."
           />
           <div className="profile-content">
-            <div className="profile-copy">
-              {portfolio.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            <figure className="profile-portrait">
+              <div className="portrait-frame">
+                <Image
+                  src="/diwakar-shukla-portrait.webp"
+                  alt="Illustrated portrait of Diwakar Shukla"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 600px) calc(100vw - 2.4rem), (max-width: 860px) 24rem, 24vw"
+                />
+              </div>
+              <figcaption>
+                <span>Portrait / DS—01</span>
+                <span>Line study</span>
+              </figcaption>
+            </figure>
+
+            <div className="profile-details">
+              <div className="profile-copy">
+                {portfolio.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+              <dl className="profile-facts">
+                <div>
+                  <dt>Current focus</dt>
+                  <dd>Semiconductor processing and materials reliability</dd>
+                </div>
+                <div>
+                  <dt>Working mode</dt>
+                  <dd>Experiment → characterize → diagnose → improve</dd>
+                </div>
+                <div>
+                  <dt>Education</dt>
+                  <dd>Cornell M.Eng. ’26 · PEC B.Tech. ’25</dd>
+                </div>
+              </dl>
             </div>
-            <dl className="profile-facts">
-              <div>
-                <dt>Current focus</dt>
-                <dd>Semiconductor processing and materials reliability</dd>
-              </div>
-              <div>
-                <dt>Working mode</dt>
-                <dd>Experiment → characterize → diagnose → improve</dd>
-              </div>
-              <div>
-                <dt>Education</dt>
-                <dd>Cornell M.Eng. ’26 · PEC B.Tech. ’25</dd>
-              </div>
-            </dl>
           </div>
         </section>
 
