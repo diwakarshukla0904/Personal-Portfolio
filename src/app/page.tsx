@@ -145,6 +145,7 @@ export default function Home() {
             description="Each study starts with a different material system. The common thread is using evidence to move from observation to an engineering decision."
           />
           <div className="project-list">
+            <p className="project-list-kicker">Featured case studies</p>
             {portfolio.projects.map((project) => <ProjectStudy key={project.number} project={project} />)}
           </div>
 

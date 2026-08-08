@@ -465,50 +465,67 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
   margin-top: clamp(5rem, 9vw, 9rem);
 }
 
-.project-study {
-  padding: clamp(4rem, 7vw, 7rem) 0;
-  border-top: 2px solid var(--line);
+.project-list-kicker {
+  padding: 0 0 1rem 5rem;
+  border-bottom: 2px solid var(--ink);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 
-.project-study:first-child {
-  padding-top: 0;
+.project-study {
+  padding: clamp(4rem, 7vw, 7rem) 0;
   border-top: 0;
+}
+
+.project-list-kicker + .project-study {
+  padding-top: 2.5rem;
+}
+
+.project-study + .project-study {
+  border-top: 3px solid var(--ink);
 }
 
 .project-header {
   display: grid;
   grid-template-columns: 5rem minmax(0, 1fr);
+  padding: 1.5rem 1.75rem 1.75rem 0;
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
 }
 
 .project-number {
-  padding-top: 0.3rem;
+  padding: 0.25rem 0 0 1.25rem;
   color: var(--accent);
-  font-size: 0.74rem;
+  font-size: 0.9rem;
 }
 
 .project-header h3 {
-  max-width: 47rem;
-  margin-top: 0.7rem;
+  max-width: 43rem;
+  margin-top: 0.65rem;
   color: #3d3934;
   font-family: var(--serif);
-  font-size: clamp(2.35rem, 4.2vw, 4.25rem);
-  font-weight: 420;
-  letter-spacing: -0.04em;
-  line-height: 1.02;
+  font-size: clamp(2.15rem, 3.15vw, 3.25rem);
+  font-weight: 470;
+  letter-spacing: -0.032em;
+  line-height: 1.06;
 }
 
 .project-summary {
   max-width: 37rem;
-  margin-top: 1.4rem;
+  margin-top: 1.15rem;
   color: var(--ink-soft);
-  font-size: 1rem;
+  font-size: 0.93rem;
   line-height: 1.65;
 }
 
 .project-visual {
   position: relative;
   min-height: clamp(23rem, 47vw, 39rem);
-  margin-top: clamp(3rem, 6vw, 5rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
   overflow: hidden;
   border: 1px solid var(--line);
   background-color: var(--paper-deep);
@@ -1247,7 +1264,20 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
   }
 
   .project-header h3 {
-    font-size: clamp(2.4rem, 12vw, 4rem);
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .project-list-kicker {
+    padding-left: 2.5rem;
+  }
+
+  .project-header {
+    padding: 1.25rem 1rem 1.4rem 0;
+  }
+
+  .project-number {
+    padding-left: 0.75rem;
+    font-size: 0.78rem;
   }
 
   .project-visual {
