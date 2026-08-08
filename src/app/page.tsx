@@ -1,12 +1,13 @@
-import { SectionHeading } from "@/components/section-heading";
+import { ProjectStudy } from "@/components/project-study";
+import { SectionIntro } from "@/components/section-intro";
 import { portfolio } from "@/data/portfolio";
 
 const navigation = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
+  { number: "01", label: "Profile", href: "#profile" },
+  { number: "02", label: "Selected work", href: "#work" },
+  { number: "03", label: "Experience", href: "#experience" },
+  { number: "04", label: "Capabilities", href: "#capabilities" },
+  { number: "05", label: "Contact", href: "#contact" },
 ];
 
 function ArrowIcon() {
@@ -28,209 +29,210 @@ function ExternalLinkIcon() {
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
 
-      <header className="site-header">
-        <div className="container nav-wrap">
-          <a className="brand" href="#top" aria-label={`${portfolio.name}, home`}>
-            <span>{portfolio.initials}</span>
-            {portfolio.name}
-          </a>
-          <nav aria-label="Primary navigation">
-            <ul>
-              {navigation.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <a className="nav-contact" href="#contact">
-            Contact
-          </a>
-        </div>
+      <header className="mobile-header">
+        <a className="mobile-brand" href="#top" aria-label={`${portfolio.name}, home`}>
+          <span>{portfolio.initials}</span>
+          <span>{portfolio.name}</span>
+        </a>
+        <a className="mobile-resume" href={portfolio.resumeHref}>Résumé</a>
       </header>
 
-      <main id="main-content">
-        <section className="hero" id="top" aria-labelledby="hero-title">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow">Materials · Semiconductors · Manufacturing</p>
-              <h1 id="hero-title">
-                Building reliable processes from <span>materials up.</span>
-              </h1>
-              <p className="hero-description">{portfolio.tagline}</p>
-              <div className="hero-actions">
-                <a className="button button-primary" href="#projects">
-                  View projects <ArrowIcon />
-                </a>
-                <a className="button button-secondary" href="#contact">
-                  Contact me
-                </a>
-              </div>
-            </div>
+      <aside className="site-rail" aria-label="Site identity and navigation">
+        <div>
+          <a className="rail-brand" href="#top" aria-label={`${portfolio.name}, home`}>
+            <span className="brand-mark">{portfolio.initials}</span>
+            <span>{portfolio.name}</span>
+          </a>
+          <p className="rail-role">{portfolio.role}</p>
+        </div>
 
-            <aside className="hero-card" aria-label="Professional summary">
-              <div className="monogram" aria-hidden="true">
-                {portfolio.initials}
+        <nav className="rail-nav" aria-label="Primary navigation">
+          <ol>
+            {navigation.map((item) => (
+              <li key={item.href}>
+                <a href={item.href}>
+                  <span>{item.number}</span>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <div className="rail-footer">
+          <p>{portfolio.descriptor}</p>
+          <a href={portfolio.resumeHref}>View résumé <ArrowIcon /></a>
+        </div>
+      </aside>
+
+      <div className="mobile-index" aria-label="Section navigation">
+        {navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
+      </div>
+
+      <main id="main-content" className="site-main">
+        <section className="hero" id="top" aria-labelledby="hero-title">
+          <div className="hero-heading">
+            <p className="eyebrow">{portfolio.descriptor}</p>
+            <h1 id="hero-title">{portfolio.headline}</h1>
+          </div>
+
+          <div className="hero-lower">
+            <p className="hero-introduction">{portfolio.introduction}</p>
+            <div className="hero-actions">
+              <a className="text-link text-link-accent" href="#work">Explore selected work <ArrowIcon /></a>
+              <a className="text-link" href={`mailto:${portfolio.email}`}>Start a conversation <ArrowIcon /></a>
+            </div>
+          </div>
+
+          <div className="material-study" aria-hidden="true">
+            <div className="study-meta study-meta-a">Specimen DS—26</div>
+            <div className="study-meta study-meta-b">Section / 04 μm</div>
+            <div className="material-layer material-layer-a"><span>01</span></div>
+            <div className="material-layer material-layer-b"><span>02</span></div>
+            <div className="material-layer material-layer-c"><span>03</span></div>
+            <div className="material-scale"><span /> 20 μm</div>
+          </div>
+        </section>
+
+        <section className="page-section profile-section" id="profile" aria-labelledby="profile-title">
+          <SectionIntro
+            id="profile-title"
+            number="01"
+            eyebrow="Profile"
+            title="From the microstructure to the manufacturing floor."
+          />
+          <div className="profile-content">
+            <div className="profile-copy">
+              {portfolio.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <dl className="profile-facts">
+              <div>
+                <dt>Current focus</dt>
+                <dd>Semiconductor processing and materials reliability</dd>
               </div>
               <div>
-                <p className="hero-card-name">{portfolio.name}</p>
-                <p>{portfolio.role}</p>
+                <dt>Working mode</dt>
+                <dd>Experiment → characterize → diagnose → improve</dd>
               </div>
-              <div className="status">
-                <span aria-hidden="true" />
-                {portfolio.availability}
+              <div>
+                <dt>Education</dt>
+                <dd>Cornell M.Eng. ’26 · PEC B.Tech. ’25</dd>
               </div>
-            </aside>
+            </dl>
           </div>
         </section>
 
-        <section className="section section-muted" id="about" aria-labelledby="about-title">
-          <div className="container about-grid">
-            <SectionHeading id="about-title" eyebrow="About" title="Curious about the why. Focused on the how." />
-            <div className="about-copy">
-              <p>{portfolio.biography}</p>
-              <dl className="at-a-glance">
-                <div>
-                  <dt>Focus</dt>
-                  <dd>Semiconductor & materials processing</dd>
-                </div>
-                <div>
-                  <dt>Approach</dt>
-                  <dd>Experiment, analyze, improve</dd>
-                </div>
-              </dl>
-            </div>
+        <section className="page-section work-section" id="work" aria-labelledby="work-title">
+          <SectionIntro
+            id="work-title"
+            number="02"
+            eyebrow="Selected work"
+            title="Three ways of making a process more legible."
+            description="Each study starts with a different material system. The common thread is using evidence to move from observation to an engineering decision."
+          />
+          <div className="project-list">
+            {portfolio.projects.map((project) => <ProjectStudy key={project.number} project={project} />)}
           </div>
-        </section>
 
-        <section className="section" id="experience" aria-labelledby="experience-title">
-          <div className="container">
-            <SectionHeading
-              id="experience-title"
-              eyebrow="Experience"
-              title="Engineering across research and manufacturing."
-              description="Hands-on work connecting materials behavior, process data, and practical improvements."
-            />
-            <div className="timeline">
-              {portfolio.experiences.map((experience) => (
-                <article className="timeline-item" key={`${experience.organization}-${experience.role}`}>
-                  <p className="timeline-date">{experience.dates}</p>
-                  <div className="timeline-content">
-                    <h3>{experience.role}</h3>
-                    <p className="organization">{experience.organization}</p>
-                    <p>{experience.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section section-dark" id="projects" aria-labelledby="projects-title">
-          <div className="container">
-            <SectionHeading
-              id="projects-title"
-              eyebrow="Selected projects"
-              title="Technical work, clearly explained."
-              description="A selection of projects in electrochemistry, advanced materials, and semiconductor fabrication."
-            />
-            <div className="project-grid">
-              {portfolio.projects.map((project, index) => (
-                <article className="project-card" key={project.name}>
-                  <p className="project-number">0{index + 1}</p>
-                  <h3>{project.name}</h3>
+          <div className="additional-work">
+            <header>
+              <p className="eyebrow">Additional technical work</p>
+              <h3>Further experiments and design studies</h3>
+            </header>
+            <div className="additional-grid">
+              {portfolio.additionalProjects.map((project, index) => (
+                <article key={project.title}>
+                  <p className="additional-number">0{index + 1}</p>
+                  <h4>{project.title}</h4>
                   <p>{project.description}</p>
-                  <ul className="tag-list" aria-label={`Technologies used for ${project.name}`}>
-                    {project.technologies.map((technology) => (
-                      <li key={technology}>{technology}</li>
-                    ))}
-                  </ul>
+                  <p className="additional-methods">{project.methods}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section" id="education" aria-labelledby="education-title">
-          <div className="container">
-            <SectionHeading
-              id="education-title"
-              eyebrow="Education"
-              title="A foundation in materials. A focus on semiconductors."
-            />
-            <div className="education-list">
-              {portfolio.education.map((item) => (
-                <article key={item.school}>
-                  <div>
-                    <p className="degree">{item.degree}</p>
-                    <h3>{item.school}</h3>
-                  </div>
-                  {"dates" in item ? <p className="education-date">{item.dates}</p> : null}
-                  <p>{item.details}</p>
-                </article>
-              ))}
-            </div>
+        <section className="page-section" id="experience" aria-labelledby="experience-title">
+          <SectionIntro
+            id="experience-title"
+            number="03"
+            eyebrow="Experience & education"
+            title="Technical range, built in real process environments."
+          />
+
+          <div className="experience-list">
+            {portfolio.experiences.map((experience) => (
+              <article key={`${experience.organization}-${experience.role}`}>
+                <p className="experience-date">{experience.dates}</p>
+                <div>
+                  <p className="experience-organization">{experience.organization}</p>
+                  <h3>{experience.role}</h3>
+                </div>
+                <p>{experience.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="education-block">
+            <p className="eyebrow">Education</p>
+            {portfolio.education.map((education) => (
+              <article key={education.school}>
+                <p className="education-date">{education.dates}</p>
+                <div>
+                  <h3>{education.school}</h3>
+                  <p>{education.degree}</p>
+                </div>
+                <p>{education.details}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="section section-muted" id="skills" aria-labelledby="skills-title">
-          <div className="container skills-layout">
-            <SectionHeading
-              id="skills-title"
-              eyebrow="Skills"
-              title="Tools for understanding and improving processes."
-            />
-            <div className="skills-grid">
-              {portfolio.skills.map((group) => (
-                <article key={group.category}>
-                  <h3>{group.category}</h3>
-                  <ul>
-                    {group.items.map((skill) => (
-                      <li key={skill}>{skill}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
+        <section className="page-section capabilities-section" id="capabilities" aria-labelledby="capabilities-title">
+          <SectionIntro
+            id="capabilities-title"
+            number="04"
+            eyebrow="Technical capabilities"
+            title="Methods are most useful when they answer the right question."
+            description="A compact view of the tools I use across fabrication, characterization, and process improvement."
+          />
+          <div className="capability-grid">
+            {portfolio.capabilities.map((capability, index) => (
+              <article key={capability.category}>
+                <p className="capability-number">0{index + 1}</p>
+                <h3>{capability.category}</h3>
+                <ul>
+                  {capability.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="container contact-card">
-            <div>
-              <p className="eyebrow">Get in touch</p>
-              <h2 id="contact-title">Let&apos;s build something that works.</h2>
-              <p>
-                I&apos;m interested in thoughtful engineering work across materials, semiconductor processing,
-                manufacturing, and quality.
-              </p>
+          <p className="eyebrow">05 · Contact</p>
+          <h2 id="contact-title">Let’s talk about the process behind the result.</h2>
+          <p className="contact-copy">
+            I’m interested in materials, semiconductor, process, and manufacturing engineering work where careful measurement leads to better decisions.
+          </p>
+          <a className="contact-email" href={`mailto:${portfolio.email}`}>
+            {portfolio.email} <ArrowIcon />
+          </a>
+          <div className="contact-meta">
+            <div className="contact-socials">
+              {portfolio.socialLinks.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label} <ExternalLinkIcon />
+                </a>
+              ))}
+              <a href={portfolio.resumeHref}>Résumé <ArrowIcon /></a>
             </div>
-            <div className="contact-links">
-              <a className="button button-light" href={`mailto:${portfolio.email}`}>
-                {portfolio.email} <ArrowIcon />
-              </a>
-              <div className="social-links">
-                {portfolio.socialLinks.map((link) => (
-                  <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
-                    {link.label} <ExternalLinkIcon />
-                  </a>
-                ))}
-              </div>
-            </div>
+            <p>Designed and built with Next.js · {new Date().getFullYear()}</p>
           </div>
         </section>
       </main>
-
-      <footer>
-        <div className="container footer-inner">
-          <p>© {new Date().getFullYear()} {portfolio.name}</p>
-          <p>Built with Next.js and curiosity.</p>
-        </div>
-      </footer>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { portfolio } from "@/data/portfolio";
 import "./globals.css";
 
@@ -13,13 +13,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const description = `${portfolio.name} is a materials and process engineer focused on semiconductors, advanced materials, and manufacturing.`;
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const description =
+  "Materials and process engineer working across semiconductor fabrication, electrochemical characterization, materials reliability, and manufacturing improvement.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shukladiwakar.com"),
   title: `${portfolio.name} | ${portfolio.role}`,
   description,
   authors: [{ name: portfolio.name }],
+  creator: portfolio.name,
+  alternates: { canonical: "/" },
+  keywords: [
+    "materials engineer",
+    "process engineer",
+    "semiconductor processing",
+    "materials characterization",
+    "manufacturing engineering",
+  ],
   openGraph: {
     type: "website",
     url: "/",
@@ -35,12 +51,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbfaf6",
+  themeColor: "#f3f0e9",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable}`}>
       <body>{children}</body>
     </html>
   );

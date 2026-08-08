@@ -1,137 +1,127 @@
 # Diwakar Shukla — Personal Portfolio
 
-A simple, one-page professional portfolio built with Next.js, TypeScript, React, and plain CSS. It is intentionally small so the structure is easy to understand and change.
+A one-page engineering portfolio built with Next.js, the App Router, TypeScript, React, and plain CSS. It is intentionally lightweight: there is no database, CMS, UI framework, or animation library.
 
 ## What is Next.js?
 
-[Next.js](https://nextjs.org/) is a framework built on React. React provides components for building the interface; Next.js adds the project structure, routing, metadata, performance optimizations, development server, and production build process. This project uses the modern **App Router**, where files inside `src/app` define the website.
+[Next.js](https://nextjs.org/) is a framework built on React. React provides components for building the interface; Next.js adds routing, metadata, font and asset optimization, a development server, and the production build process. This project uses the **App Router**, where files inside `src/app` define the website.
 
 ## Project structure
 
 ```text
 Personal-Portfolio/
-├── public/                    # Static files such as future photos or PDFs
+├── public/
+│   └── diwakar-shukla-resume.pdf # Résumé linked throughout the site
 ├── src/
 │   ├── app/
-│   │   ├── globals.css       # All colors, spacing, layout, and responsive styles
-│   │   ├── layout.tsx        # Site-wide fonts and search/social metadata
-│   │   ├── page.tsx          # The one-page portfolio interface
-│   │   ├── icon.svg          # Browser tab icon
-│   │   ├── opengraph-image.tsx # Social sharing image
-│   │   ├── robots.ts         # Search-engine instructions
-│   │   └── sitemap.ts        # Search-engine page listing
+│   │   ├── globals.css           # Design system, layout, motion, responsive CSS
+│   │   ├── layout.tsx            # Fonts and search/social metadata
+│   │   ├── page.tsx              # One-page portfolio structure
+│   │   ├── icon.svg              # Browser tab icon
+│   │   ├── opengraph-image.tsx   # Generated social sharing image
+│   │   ├── robots.ts             # Search-engine instructions
+│   │   └── sitemap.ts            # Search-engine page listing
 │   ├── components/
-│   │   └── section-heading.tsx # Reusable heading component
+│   │   ├── project-study.tsx     # Featured project case-study layout
+│   │   └── section-intro.tsx     # Reusable section heading
 │   └── data/
-│       └── portfolio.ts      # Your editable personal content
-├── package.json              # Project commands and dependencies
-└── pnpm-lock.yaml            # Exact dependency versions
+│       └── portfolio.ts          # Editable personal and professional content
+├── package.json                  # Commands and dependencies
+└── pnpm-lock.yaml                # Exact dependency versions
 ```
 
-## Change your personal information
+## Where to change personal information
 
-Most content lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts).
+Most content lives in [`src/data/portfolio.ts`](src/data/portfolio.ts). Edit that one file to change the headline, biography, email, social links, experience, projects, education, or technical capabilities. TypeScript types at the top describe the required shape of each item and catch missing fields.
 
-Open it to update your name, role, biography, email, social links, experience, projects, education, or skills. The page reads that data automatically, so you usually do not need to edit the React components when changing content.
+## Add or edit a project
 
-## Add a new project
+Featured case studies live in the `projects` array in `src/data/portfolio.ts`. Each project contains:
 
-In `src/data/portfolio.ts`, find the `projects` list and add another object before the closing `]`:
+- `title`, `eyebrow`, and `summary` for the introduction
+- `context`, `contribution`, and `outcome` for the engineering brief
+- `steps` for the process sequence
+- `methods` for the compact methods list
+- `visual` to choose one of the existing CSS diagrams: `interface`, `wafer`, or `steel`
 
-```ts
-{
-  name: "My New Project",
-  description: "A clear explanation of the problem, what I did, and the result.",
-  technologies: ["Tool one", "Tool two", "Tool three"],
-},
-```
+Copy an existing project object, change every field, and give it the next `number`. Smaller projects belong in `additionalProjects` and need only a title, description, and methods line.
 
-Save the file. If the development server is running, the browser will update automatically.
+## Replace the résumé
 
-## Change colors or styling
+Replace `public/diwakar-shukla-resume.pdf` with the new PDF and keep the same filename. The navigation and contact links will continue working. If you rename the file, also update `resumeHref` in `src/data/portfolio.ts`.
 
-Open [`src/app/globals.css`](src/app/globals.css).
+## Change colors, typography, or spacing
 
-The colors are variables at the top of the file:
+Open [`src/app/globals.css`](src/app/globals.css). The design tokens at the top control the visual system:
 
 ```css
 :root {
-  --ink: #162421;
-  --paper: #fbfaf6;
-  --accent: #096a5a;
+  --ink: #242321;
+  --paper: #f3f0e9;
+  --accent: #b94726;
+  --rail-width: 17rem;
 }
 ```
 
-Changing `--accent`, for example, updates the green accent across the site. The rest of the file is organized roughly in the same order as the page: navigation, hero, sections, projects, contact, and responsive rules.
+Change `--accent` to update the oxide/copper accent. Font loading is configured in `src/app/layout.tsx`; font usage is assigned through `--serif`, `--sans`, and `--mono` in `globals.css`. Responsive layouts are near the bottom of the CSS file at 1050px, 860px, and 600px.
 
 ## Run the website locally
 
-You need [Node.js](https://nodejs.org/) 20.9 or newer and [pnpm](https://pnpm.io/installation) installed.
+Install [Node.js](https://nodejs.org/) 20.9 or newer and [pnpm](https://pnpm.io/installation), then run:
 
-1. Clone the repository and enter it:
+```bash
+git clone https://github.com/diwakarshukla0904/Personal-Portfolio.git
+cd Personal-Portfolio
+pnpm install
+pnpm run dev
+```
 
-   ```bash
-   git clone https://github.com/diwakarshukla0904/Personal-Portfolio.git
-   cd Personal-Portfolio
-   ```
+Open [http://localhost:3000](http://localhost:3000).
 
-2. Install the project dependencies:
+- `pnpm install` reads `package.json` and downloads the exact packages the project needs.
+- `pnpm run dev` starts Next.js in development mode; saved edits appear in the browser quickly.
+- Stop the development server with `Ctrl+C`.
 
-   ```bash
-   pnpm install
-   ```
-
-3. Start the local development server:
-
-   ```bash
-   pnpm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000).
-
-`pnpm install` reads `package.json` and downloads the packages the project needs. `pnpm run dev` runs the `dev` command from `package.json`, starting Next.js in development mode with fast browser updates.
-
-To check production readiness, run:
+Before publishing, run:
 
 ```bash
 pnpm run lint
+pnpm exec tsc --noEmit
 pnpm run build
 ```
 
+These commands check code style, TypeScript correctness, and the same optimized production build Vercel creates.
+
 ## How GitHub and Vercel deployment work
 
-Vercel connects to this GitHub repository and watches its production branch, usually `main`.
+Vercel is connected to this GitHub repository and its production branch, `main`.
 
 ```text
-Edit files → commit the changes → push to GitHub → Vercel builds → site updates
+Edit files → commit → push to GitHub → Vercel builds → shukladiwakar.com updates
 ```
 
-- A push to `main` creates a new production deployment.
-- A push to another branch can create a preview deployment.
-- If a build fails, the current live production site stays unchanged and Vercel shows the error in its deployment logs.
+A push to `main` starts a production deployment. A push to another branch can create a preview deployment. If a build fails, the current production deployment remains live and the error appears in Vercel’s deployment logs.
 
 ## Save and publish a change
-
-After editing and checking the site:
 
 ```bash
 git status
 git add src/data/portfolio.ts
-git commit -m "Update portfolio content"
-git push
+git commit -m "Update portfolio project"
+git push origin main
 ```
 
 - `git status` shows changed files.
-- `git add` selects a file for the commit.
+- `git add` chooses what will be included.
 - `git commit` saves a named snapshot locally.
-- `git push` sends that commit to GitHub. Vercel then starts a deployment automatically when Git integration is connected.
+- `git push` sends it to GitHub, which triggers Vercel.
 
-Use a short commit message that says what changed, such as `Add battery project` or `Update biography`.
+After pushing, check the Vercel deployment status and then open [shukladiwakar.com](https://shukladiwakar.com). A successful Git push does not by itself prove that the new deployment built correctly.
 
 ## Files to learn first
 
-1. **`src/data/portfolio.ts`** — learn how arrays and objects hold the content.
-2. **`src/app/page.tsx`** — see how React maps that data into sections and cards.
-3. **`src/app/globals.css`** — learn how CSS controls colors, spacing, layout, hover states, and mobile behavior.
-
-After those, read `src/components/section-heading.tsx` to see a small reusable React component and `src/app/layout.tsx` to understand fonts and page metadata.
+1. `src/data/portfolio.ts` — objects, arrays, TypeScript types, and all site content.
+2. `src/app/page.tsx` — semantic HTML and how React maps data into sections.
+3. `src/app/globals.css` — colors, typography, grids, hover states, and mobile layouts.
+4. `src/components/project-study.tsx` — how a reusable component receives one project.
+5. `src/app/layout.tsx` — optimized fonts, metadata, canonical URL, and social previews.
