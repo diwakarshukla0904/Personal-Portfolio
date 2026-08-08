@@ -78,8 +78,12 @@ export const portfolio = {
       href: "https://www.linkedin.com/in/diwakar-shukla-b26a96239/",
     },
     {
-      label: "GitHub",
-      href: "https://github.com/diwakarshukla0904",
+      label: "Medium",
+      href: "https://medium.com/@diwakarshukla0409",
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/diwakarshuklaa?igsh=d29iYTRxZTZyNDNx",
     },
   ],
   experiences: [

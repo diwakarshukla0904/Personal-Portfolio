@@ -74,9 +74,28 @@ export default function Home() {
 
       <main id="main-content" className="site-main">
         <section className="hero" id="top" aria-labelledby="hero-title">
-          <div className="hero-heading">
-            <p className="eyebrow">{portfolio.descriptor}</p>
-            <h1 id="hero-title">{portfolio.headline}</h1>
+          <div className="hero-top">
+            <div className="hero-heading">
+              <p className="eyebrow">{portfolio.descriptor}</p>
+              <h1 id="hero-title">{portfolio.headline}</h1>
+            </div>
+
+            <figure className="hero-portrait">
+              <div className="portrait-frame">
+                <Image
+                  src="/diwakar-shukla-portrait.webp"
+                  alt="Illustrated portrait of Diwakar Shukla"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 600px) 72vw, (max-width: 860px) 18rem, 23vw"
+                  priority
+                />
+              </div>
+              <figcaption className="portrait-caption">
+                <span>Diwakar Shukla</span>
+                <span>Portrait study</span>
+              </figcaption>
+            </figure>
           </div>
 
           <div className="hero-lower">
@@ -87,14 +106,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="material-study" aria-hidden="true">
-            <div className="study-meta study-meta-a">Specimen DS—26</div>
-            <div className="study-meta study-meta-b">Section / 04 μm</div>
-            <div className="material-layer material-layer-a"><span>01</span></div>
-            <div className="material-layer material-layer-b"><span>02</span></div>
-            <div className="material-layer material-layer-c"><span>03</span></div>
-            <div className="material-scale"><span /> 20 μm</div>
-          </div>
         </section>
 
         <section className="page-section profile-section" id="profile" aria-labelledby="profile-title">
@@ -105,41 +116,23 @@ export default function Home() {
             title="From the microstructure to the manufacturing floor."
           />
           <div className="profile-content">
-            <figure className="profile-portrait">
-              <div className="portrait-frame">
-                <Image
-                  src="/diwakar-shukla-portrait.webp"
-                  alt="Illustrated portrait of Diwakar Shukla"
-                  width={1122}
-                  height={1402}
-                  sizes="(max-width: 600px) calc(100vw - 2.4rem), (max-width: 860px) 24rem, 24vw"
-                />
-              </div>
-              <figcaption>
-                <span>Portrait / DS—01</span>
-                <span>Line study</span>
-              </figcaption>
-            </figure>
-
-            <div className="profile-details">
-              <div className="profile-copy">
-                {portfolio.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-              <dl className="profile-facts">
-                <div>
-                  <dt>Current focus</dt>
-                  <dd>Semiconductor processing and materials reliability</dd>
-                </div>
-                <div>
-                  <dt>Working mode</dt>
-                  <dd>Experiment → characterize → diagnose → improve</dd>
-                </div>
-                <div>
-                  <dt>Education</dt>
-                  <dd>Cornell M.Eng. ’26 · PEC B.Tech. ’25</dd>
-                </div>
-              </dl>
+            <div className="profile-copy">
+              {portfolio.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
+            <dl className="profile-facts">
+              <div>
+                <dt>Current focus</dt>
+                <dd>Semiconductor processing and materials reliability</dd>
+              </div>
+              <div>
+                <dt>Working mode</dt>
+                <dd>Experiment → characterize → diagnose → improve</dd>
+              </div>
+              <div>
+                <dt>Education</dt>
+                <dd>Cornell M.Eng. ’26 · PEC B.Tech. ’25</dd>
+              </div>
+            </dl>
           </div>
         </section>
 
@@ -248,7 +241,6 @@ export default function Home() {
               ))}
               <a href={portfolio.resumeHref}>Résumé <ArrowIcon /></a>
             </div>
-            <p>Designed and built with Next.js · {new Date().getFullYear()}</p>
           </div>
         </section>
       </main>

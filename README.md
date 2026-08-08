@@ -11,7 +11,7 @@ A one-page engineering portfolio built with Next.js, the App Router, TypeScript,
 ```text
 Personal-Portfolio/
 ├── public/
-│   ├── diwakar-shukla-portrait.webp # Portrait shown in the Profile section
+│   ├── diwakar-shukla-portrait.webp # Portrait shown in the opening hero
 │   └── diwakar-shukla-resume.pdf # Résumé linked throughout the site
 ├── src/
 │   ├── app/
