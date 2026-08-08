@@ -141,8 +141,6 @@ export default function Home() {
             id="work-title"
             number="02"
             eyebrow="Selected work"
-            title="Three ways of making a process more legible."
-            description="Each study starts with a different material system. The common thread is using evidence to move from observation to an engineering decision."
           />
           <div className="project-list">
             <p className="project-list-kicker">Featured case studies</p>
