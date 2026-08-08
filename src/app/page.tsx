@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { portfolio } from "@/data/portfolio";
 
 const navigation = [
-  { label: "About", href: "#about" },
+  { label: "Abot", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
