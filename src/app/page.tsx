@@ -174,6 +174,7 @@ export default function Home() {
             title="Technical range, built in real process environments."
           />
 
+          <p className="subsection-kicker">Professional experience</p>
           <div className="experience-list">
             {portfolio.experiences.map((experience) => (
               <article key={`${experience.organization}-${experience.role}`}>
@@ -188,7 +189,7 @@ export default function Home() {
           </div>
 
           <div className="education-block">
-            <p className="eyebrow">Education</p>
+            <p className="subsection-kicker">Education</p>
             {portfolio.education.map((education) => (
               <article key={education.school}>
                 <p className="education-date">{education.dates}</p>

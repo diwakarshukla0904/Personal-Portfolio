@@ -320,11 +320,20 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
   display: grid;
   grid-template-columns: 5rem minmax(0, 1fr);
   max-width: 63rem;
+  padding-top: 1.35rem;
+  border-top: 2px solid var(--ink);
 }
 
 .section-index {
   padding-top: 0.25rem;
-  color: var(--ink-soft);
+  color: var(--accent);
+  font-size: 0.74rem;
+}
+
+.section-intro .eyebrow {
+  font-size: 0.72rem;
+  font-weight: 680;
+  letter-spacing: 0.13em;
 }
 
 .section-intro h2 {
@@ -340,8 +349,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .section-description {
   max-width: 39rem;
   margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.65;
 }
 
@@ -456,7 +467,7 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .project-study {
   padding: clamp(4rem, 7vw, 7rem) 0;
-  border-top: 1px solid var(--ink);
+  border-top: 2px solid var(--line);
 }
 
 .project-study:first-child {
@@ -472,23 +483,26 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .project-number {
   padding-top: 0.3rem;
   color: var(--accent);
+  font-size: 0.74rem;
 }
 
 .project-header h3 {
-  max-width: 52rem;
+  max-width: 47rem;
   margin-top: 0.7rem;
+  color: #3d3934;
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 390;
-  letter-spacing: -0.045em;
-  line-height: 0.98;
+  font-size: clamp(2.35rem, 4.2vw, 4.25rem);
+  font-weight: 420;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .project-summary {
   max-width: 37rem;
   margin-top: 1.4rem;
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .project-visual {
@@ -632,6 +646,8 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .brief-label {
   color: var(--accent);
+  font-weight: 680;
+  letter-spacing: 0.12em;
 }
 
 .project-process {
@@ -670,8 +686,9 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .project-process h4 {
   margin-top: 0.2rem;
+  color: #3d3934;
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: 1.48rem;
   font-weight: 500;
 }
 
@@ -704,16 +721,28 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .additional-work {
   margin-top: 2rem;
   padding-top: clamp(5rem, 9vw, 8rem);
-  border-top: 1px solid var(--ink);
+  border-top: 2px solid var(--ink);
+}
+
+.additional-work header {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+
+.additional-work header .eyebrow {
+  grid-column: 2;
+  font-weight: 680;
 }
 
 .additional-work header h3 {
+  grid-column: 2;
   max-width: 40rem;
   margin-top: 0.8rem;
+  color: #3d3934;
   font-family: var(--serif);
-  font-size: clamp(2.4rem, 4vw, 4rem);
-  font-weight: 390;
-  line-height: 1;
+  font-size: clamp(2.2rem, 3.3vw, 3.35rem);
+  font-weight: 430;
+  line-height: 1.05;
 }
 
 .additional-grid {
@@ -739,9 +768,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .additional-grid h4 {
   margin-top: 4rem;
+  color: #3d3934;
   font-family: var(--serif);
-  font-size: 1.65rem;
-  font-weight: 450;
+  font-size: 1.52rem;
+  font-weight: 500;
   line-height: 1.1;
 }
 
@@ -762,8 +792,19 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 }
 
 .experience-list {
+  margin-top: 0;
+}
+
+.subsection-kicker {
   margin-top: clamp(4rem, 8vw, 7rem);
-  border-top: 1px solid var(--ink);
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ink);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 680;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .experience-list article,
@@ -792,9 +833,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .experience-list h3,
 .education-block h3 {
   margin-top: 0.3rem;
+  color: #3d3934;
   font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 480;
+  font-size: 1.58rem;
+  font-weight: 520;
   line-height: 1.15;
 }
 
@@ -808,12 +850,12 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
   margin-top: 6rem;
 }
 
-.education-block > .eyebrow {
-  margin-bottom: 1.2rem;
+.education-block > .subsection-kicker {
+  margin-top: 0;
 }
 
 .education-block article:first-of-type {
-  border-top: 1px solid var(--ink);
+  border-top: 0;
 }
 
 .education-block article div > p {
@@ -838,6 +880,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .capabilities-section .section-index,
 .capabilities-section .section-description {
   color: var(--night-soft);
+}
+
+.capabilities-section .section-intro {
+  border-top-color: #777b77;
 }
 
 .capabilities-section .eyebrow {
@@ -865,9 +911,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
 .capability-grid h3 {
   margin-top: 3.5rem;
+  color: var(--white);
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 3vw, 2.7rem);
-  font-weight: 420;
+  font-size: clamp(1.75rem, 2.7vw, 2.45rem);
+  font-weight: 460;
 }
 
 .capability-grid ul {
@@ -886,6 +933,7 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 .contact-section {
   padding-top: clamp(6rem, 11vw, 11rem);
   padding-bottom: 2.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .contact-section h2 {
@@ -1179,6 +1227,10 @@ body:has(#contact:target) .rail-nav a[href="#contact"] {
 
   .section-intro,
   .project-header {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .additional-work header {
     grid-template-columns: 2.5rem minmax(0, 1fr);
   }
 
